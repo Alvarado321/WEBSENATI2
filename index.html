@@ -6,6 +6,20 @@
     <title>Student Attendance System - Login</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        function handleLogin(event) {
+            event.preventDefault(); // Evita el envío del formulario
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Verifica las credenciales (puedes personalizar esto)
+            if (username === 'admin' && password === '123456') {
+                window.location.href = 'pagina_destino.html'; // Cambia esto a la URL de tu página de destino
+            } else {
+                alert('Usuario o contraseña incorrectos');
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -15,7 +29,7 @@
                 <p>Inicie sesión para acceder al sistema</p>
             </div>
 
-            <form method="post" action="">
+            <form method="post" onsubmit="handleLogin(event)">
                 <div class="form-group">
                     <label for="username"><i class="fas fa-user"></i> Usuario</label>
                     <input type="text" id="username" name="username" required>
