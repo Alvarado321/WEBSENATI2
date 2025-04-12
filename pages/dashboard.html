@@ -13,31 +13,73 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
   <!-- Estilos personalizados -->
-  
+  <style>
+    .dashboard-container {
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 250px;
+      flex-shrink: 0;
+    }
+    .main-content {
+      flex-grow: 1;
+      padding: 20px;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <div class="bg-dark text-white p-3 sidebar">
+      <h2 class="text-center">Senati</h2>
 
-  <div class="container py-4">
-    <h1 class="text-center mb-4">Dashboard de Marketing</h1>
+      <!-- Barra de búsqueda -->
+      <div class="input-group my-4">
+        <input type="text" class="form-control" placeholder="Buscar...">
+        <span class="input-group-text">🔍</span>
+      </div>
 
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card p-3 shadow">
-          <h2 class="h5 text-center">Ventas</h2>
-          <canvas id="ventasChart"></canvas>
+      <!-- Enlaces del menú -->
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a href="dashboard.html" class="nav-link text-white">🏠 Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a href="perfil.html" class="nav-link text-white">👤 Perfil</a>
+        </li>
+        <li class="nav-item">
+          <a href="usuario.html" class="nav-link text-white">⚙️ Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a href="login.html" class="nav-link text-white">🚪 Salir</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+      <h1 class="text-center mb-4">Dashboard de Marketing</h1>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card p-3 shadow">
+            <h2 class="h5 text-center">Ventas</h2>
+            <canvas id="ventasChart"></canvas>
+          </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card p-3 shadow">
-          <h2 class="h5 text-center">Leads Generados</h2>
-          <canvas id="leadsChart"></canvas>
+        <div class="col-md-4">
+          <div class="card p-3 shadow">
+            <h2 class="h5 text-center">Leads Generados</h2>
+            <canvas id="leadsChart"></canvas>
+          </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card p-3 shadow">
-          <h2 class="h5 text-center">Conversiones</h2>
-          <canvas id="conversionesChart"></canvas>
+        <div class="col-md-4">
+          <div class="card p-3 shadow">
+            <h2 class="h5 text-center">Conversiones</h2>
+            <canvas id="conversionesChart"></canvas>
+          </div>
         </div>
       </div>
     </div>

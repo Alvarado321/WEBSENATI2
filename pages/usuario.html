@@ -1,47 +1,160 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <title>CRUD Solo HTML - Diseño CSS</title>
-  <link rel="stylesheet" href="../styles/usuario.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestión de Usuarios</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- Estilos personalizados -->
+  <style>
+    .dashboard-container {
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 250px;
+      flex-shrink: 0;
+    }
+    .main-content {
+      flex-grow: 1;
+      padding: 20px;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <div class="bg-dark text-white p-3 sidebar">
+      <h2 class="text-center">Senati</h2>
 
-  <h2>Formulario de Usuario</h2>
-  <form>
-    <label>Nombre:</label>
-    <input type="text" name="nombre" placeholder="Ingresa el nombre">
+      <!-- Barra de búsqueda -->
+      <div class="input-group my-4">
+        <input type="text" class="form-control" placeholder="Buscar...">
+        <span class="input-group-text">🔍</span>
+      </div>
 
-    <label>Email:</label>
-    <input type="email" name="email" placeholder="correo@ejemplo.com">
+      <!-- Enlaces del menú -->
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a href="dashboard.html" class="nav-link text-white">🏠 Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a href="perfil.html" class="nav-link text-white">👤 Perfil</a>
+        </li>
+        <li class="nav-item">
+          <a href="usuario.html" class="nav-link text-white">⚙️ Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a href="login.html" class="nav-link text-white">🚪 Salir</a>
+        </li>
+      </ul>
+    </div>
 
-    <button type="submit">Agregar</button>
-  </form>
+    <!-- Contenido principal -->
+    <div class="main-content">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Gestión de Usuarios</h1>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#nuevoUsuarioModal">
+          <i class="fas fa-plus"></i> Nuevo Usuario
+        </button>
+      </div>
 
-  <h2>Lista de Usuarios</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Email</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Renzo Reymundo </td>
-        <td>reymundojohan@gmail.com</td>
-        <td>
-          <button>Editar</button>
-          <button>Eliminar</button>
-        </td>
-      </tr>
-      <!-- Puedes agregar más filas aquí -->
-    </tbody>
-  </table>
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Email</th>
+                  <th>Departamento</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Juan Pérez</td>
+                  <td>juan@senati.edu.pe</td>
+                  <td>Marketing</td>
+                  <td><span class="badge bg-success">Activo</span></td>
+                  <td>
+                    <button class="btn btn-sm btn-info"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>María García</td>
+                  <td>maria@senati.edu.pe</td>
+                  <td>Ventas</td>
+                  <td><span class="badge bg-success">Activo</span></td>
+                  <td>
+                    <button class="btn btn-sm btn-info"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Modal Nuevo Usuario -->
+  <div class="modal fade" id="nuevoUsuarioModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Nuevo Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre Completo</label>
+              <input type="text" class="form-control" id="nombre" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="departamento" class="form-label">Departamento</label>
+              <select class="form-select" id="departamento" required>
+                <option value="">Seleccione un departamento</option>
+                <option>Marketing</option>
+                <option>Ventas</option>
+                <option>Recursos Humanos</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="password" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>
 
 </html>
